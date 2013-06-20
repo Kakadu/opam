@@ -9,6 +9,7 @@ begin library "opam-repositories"
     "opamGit.ml"
     "opamDarcs.ml"
     "opamHg.ml"
+    "opamSvn.ml"
   ]
 
   requires = [

@@ -26,6 +26,7 @@ let () =
   OpamGit.register ();
   OpamDarcs.register();
   OpamLocal.register ();
+  OpamSvn.register ();
   OpamHg.register ()
 
 let confirm fmt =

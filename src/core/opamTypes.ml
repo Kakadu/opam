@@ -61,7 +61,7 @@ type repository_root = dirname
 
 type 'a repository_name_map = 'a OpamRepositoryName.Map.t
 
-type repository_kind = [`http|`local|`git|`darcs|`hg]
+type repository_kind = [`http|`local|`git|`darcs|`hg|`svn]
 
 type repository = {
   repo_root    : repository_root;
@@ -76,7 +76,8 @@ let string_of_repository_kind = function
   | `local -> "local"
   | `git   -> "git"
   | `darcs -> "darcs"
-  | `hg -> "hg"
+  | `hg    -> "hg"
+  | `svn   -> "svn"
 
 let repository_kind_of_string = function
   | "wget"
@@ -86,7 +87,9 @@ let repository_kind_of_string = function
   | "local" -> `local
   | "git"   -> `git
   | "darcs" -> `darcs
-  | "hg" -> `hg
+  | "hg"    -> `hg
+  | "subversion"
+  | "svn"   -> `svn
   | s -> OpamGlobals.error_and_exit "%s is not a valid repository kind." s
 
 type variable = OpamVariable.t

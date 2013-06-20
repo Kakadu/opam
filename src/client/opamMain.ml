@@ -237,6 +237,7 @@ let repo_kind_flag =
     "git"  , `git;
     "darcs"  , `darcs;
     "hg"   , `hg;
+    "svn"  , `svn;
 
     (* aliases *)
     "wget" , `http;
@@ -245,7 +246,7 @@ let repo_kind_flag =
   ] in
   mk_opt ["k";"kind"]
     "KIND" "Specify the kind of the repository to be set (the main ones \
-            are 'http', 'local', 'git', 'darcs' or 'hg')."
+            are 'http', 'local', 'git', 'darcs', 'svn' or 'hg')."
     Arg.(some (enum kinds)) None
 
 let jobs_flag =
@@ -370,6 +371,8 @@ let guess_repository_kind kind address =
         `git
       else if OpamMisc.starts_with ~prefix:"hg" address then
         `hg
+      else if OpamMisc.starts_with ~prefix:"svn" address then
+        `svn
       else
         `http
   | Some k -> k
@@ -1032,6 +1035,7 @@ let pin =
       "version", `version;
       "local"  , `local;
       "rsync"  , `local;
+(*      "svn"    , `svn; *)
       "hg"     , `hg
     ] in
     Arg.(value & opt (some & enum kinds) None & doc) in

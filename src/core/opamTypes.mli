@@ -149,13 +149,13 @@ type repository_name = OpamRepositoryName.t
 type 'a repository_name_map = 'a OpamRepositoryName.Map.t
 
 (** Repository kind *)
-type repository_kind = [`http|`local|`git|`darcs|`hg]
+type repository_kind = [`http|`local|`git|`darcs|`hg|`svn]
 
 (** Pretty-print repository kinds. *)
-val string_of_repository_kind: [`http|`local|`git|`darcs|`hg] -> string
+val string_of_repository_kind: [`http|`local|`git|`darcs|`hg|`svn] -> string
 
 (** Parser of repository kinds. Raise an error if the kind is not valid. *)
-val repository_kind_of_string: string -> [`http|`local|`git|`darcs|`hg]
+val repository_kind_of_string: string -> [`http|`local|`git|`darcs|`hg|`svn]
 
 (** Repository address *)
 type address = dirname
